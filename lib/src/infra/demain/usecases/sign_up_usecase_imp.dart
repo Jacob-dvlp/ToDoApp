@@ -1,7 +1,6 @@
-import "../../errors/messages/error_messages.dart";
 import "usecases.dart";
 
-class SignUpUsecaseImp implements UserLoginUsecaseI {
+class SignUpUsecaseImp implements SignUpUsecaseI {
   final SignUpRepositoryI signUpRepositoryI;
 
   SignUpUsecaseImp({required this.signUpRepositoryI});
@@ -20,7 +19,7 @@ class SignUpUsecaseImp implements UserLoginUsecaseI {
       },
       (data) => Right(
         data,
-    ),
+      ),
     );
   }
 }

@@ -5,12 +5,12 @@ import 'controller.dart';
 part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
-  final UserLoginUsecaseI userLoginUsecaseI;
+  final SignUpUsecaseI signUpUsecaseI;
 
   ReponseEntitie? reponseEntitie;
 
   SignUpCubit({
-    required this.userLoginUsecaseI,
+    required this.signUpUsecaseI,
   }) : super(InitialSignUpState());
 
   Future signUp({required String email, required String password}) async {
@@ -18,7 +18,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       LoadingSignUpState(),
     );
     final response =
-        await userLoginUsecaseI.userSignUp(email: email, password: password);
+        await signUpUsecaseI.userSignUp(email: email, password: password);
     return response.fold(
       (error) {
         return emit(
