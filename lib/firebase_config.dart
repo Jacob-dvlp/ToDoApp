@@ -7,8 +7,6 @@ class DefaultFirebaseOptions {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
-      case TargetPlatform.iOS:
-        return ios;
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
@@ -24,14 +22,5 @@ class DefaultFirebaseOptions {
     authDomain: 'https://todoapp-8f063-default-rtdb.firebaseio.com/',
     storageBucket: 'todoapp-8f063.appspot.com',
     measurementId: 'G-3GFYMMDJKX',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA4Amtz_QekuPsgcgdF3pYQMDESzMRbsaQ',
-    appId: '1:674171642789:ios:77907ea2aa642daf7dfe4c',
-    messagingSenderId: '674171642789',
-    projectId: 'uwipa-eceb0',
-    storageBucket: 'uwipa-eceb0.appspot.com',
-    iosBundleId: 'com.example.uwipa',
   );
 }
