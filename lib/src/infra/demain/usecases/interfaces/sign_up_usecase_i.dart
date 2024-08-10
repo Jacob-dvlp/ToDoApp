@@ -1,4 +1,4 @@
-import "usecases.dart";
+import "../usecases.dart";
 
 abstract interface class UserLoginUsecaseI {
   Future<Either<Failure, UserEntite>> userSignUp(

@@ -18,7 +18,9 @@ class SignUpUsecaseImp implements UserLoginUsecaseI {
       (error) {
         return Left(Failure(error: ErrorMessages.showMessage(error.error!)));
       },
-      (data) => Right(data),
+      (data) => Right(
+        data,
+    ),
     );
   }
 }
