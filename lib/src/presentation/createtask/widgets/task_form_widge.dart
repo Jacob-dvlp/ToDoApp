@@ -1,9 +1,9 @@
 import 'package:todo_app/app_exports.dart';
 
 import '../../../utils/app_custom_message.dart';
-import '../../home/widget/home_page.dart';
+import '../../home/home_page.dart';
 import '../../routes/app_routes.dart';
-import '../controller/task_cubit.dart';
+import '../../shared/controller/task_cubit.dart';
 
 class TaskFormWidge extends StatefulWidget {
   const TaskFormWidge({super.key});

@@ -5,7 +5,7 @@ import 'package:todo_app/app_exports.dart';
 
 import '../../../utils/app_constants.dart';
 import '../../../utils/app_custom_message.dart';
-import '../../home/widget/home_page.dart';
+import '../../home/home_page.dart';
 import '../../routes/app_routes.dart';
 import '../../sign_in/sign_in_page.dart';
 import '../controller/sign_up_cubit.dart';

@@ -6,4 +6,6 @@ abstract interface class TaskRepositoryI {
       required String title,
       required String date,
       required String description});
+
+  Future<Either<Failure, List<TaskEntitie?>>> getTaskList();
 }

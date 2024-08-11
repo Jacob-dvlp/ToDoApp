@@ -8,9 +8,11 @@ final class TaskInitial extends TaskState {}
 final class TaskLoadingState extends TaskState {}
 
 final class TaskLoadedState extends TaskState {
-  final int value;
+  final int? value;
 
-  TaskLoadedState({required this.value});
+  final List<TaskEntitie?>? task;
+
+  TaskLoadedState({this.value, this.task});
 }
 
 class TaskErrorState extends TaskState {

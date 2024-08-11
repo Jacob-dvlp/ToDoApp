@@ -1,4 +1,5 @@
 import '../datasource/local/database.dart';
+import '../models/task_model.dart';
 import 'repository.dart';
 
 class TaskRepository implements TaskRepositoryI {
@@ -13,7 +14,7 @@ class TaskRepository implements TaskRepositoryI {
       required String date,
       required String description}) async {
     try {
-      var dbClient = await taskDatabase.database;
+      final dbClient = await taskDatabase.database;
       final data = await dbClient!.insert('task', {
         'isDone': isDone,
         'title': title,
@@ -24,6 +25,22 @@ class TaskRepository implements TaskRepositoryI {
     } catch (e) {
       return const Left(
         Failure(error: "Erro ao salvar Task"),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<TaskModel?>>> getTaskList() async {
+    try {
+      final dbClient = await taskDatabase.database;
+
+      final List<Map<String, Object?>> queryResult =
+          await dbClient!.query('task');
+      final taskList = queryResult.map((e) => TaskModel.fromMap(e)).toList();
+      return Right(taskList);
+    } catch (e) {
+      return const Left(
+        Failure(error: "Erro ao buscar Tasks"),
       );
     }
   }

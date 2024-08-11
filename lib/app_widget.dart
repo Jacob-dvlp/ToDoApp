@@ -1,8 +1,8 @@
 import 'package:todo_app/src/infra/services/locator.dart';
+import 'package:todo_app/src/presentation/home/home_page.dart';
 
 import 'app_exports.dart';
 import 'src/infra/services/locator_service.dart';
-import 'src/presentation/sign_in/sign_in_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -26,7 +26,7 @@ class AppWidget extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SignInPage(),
+        home: HomePage(),
       ),
     );
   }

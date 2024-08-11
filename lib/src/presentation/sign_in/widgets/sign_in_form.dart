@@ -4,7 +4,7 @@ import 'package:todo_app/src/presentation/sign_in/controller/sign_in_cubit.dart'
 import '../../../../app_exports.dart';
 import '../../../utils/app_constants.dart';
 import '../../../utils/app_custom_message.dart';
-import '../../home/widget/home_page.dart';
+import '../../home/home_page.dart';
 import '../../routes/app_routes.dart';
 import '../../sign_up/widget/todo_text_field.dart';
 
