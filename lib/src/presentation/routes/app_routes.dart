@@ -17,4 +17,8 @@ class AppRoutes {
       },
     ));
   }
+
+  static void close({required BuildContext context}) {
+    Navigator.pop(context);
+  }
 }

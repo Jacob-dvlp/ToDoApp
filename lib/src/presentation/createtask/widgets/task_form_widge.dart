@@ -1,7 +1,8 @@
 import 'package:todo_app/app_exports.dart';
+import 'package:todo_app/src/infra/services/locator.dart';
+import 'package:todo_app/src/infra/services/locator_service.dart';
 
 import '../../../utils/app_custom_message.dart';
-import '../../home/home_page.dart';
 import '../../routes/app_routes.dart';
 import '../../shared/controller/task_cubit.dart';
 
@@ -24,6 +25,18 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
           padding: const EdgeInsets.all(30.0),
           child: Column(
             children: [
+              const Text(
+                "Escolhe Cor",
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               TextFormField(
                 controller: titleController,
                 decoration: const InputDecoration(
@@ -97,10 +110,8 @@ buildBlocListener(BuildContext context, TaskState state) {
   if (state is TaskLoadedState) {
     if (state.value != 0) {
       Messages.showSuccess(context, "Tarefa criada com Sucesso");
-      return AppRoutes.pushReplecement(
-        context: context,
-        page: const HomePage(),
-      );
+      locator<TaskCubit>().getTaskList();
+      return AppRoutes.close(context: context);
     }
   }
   if (state is TaskErrorState) {

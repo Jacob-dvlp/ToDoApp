@@ -1,7 +1,10 @@
 import 'package:todo_app/app_exports.dart';
 import 'package:todo_app/src/infra/services/locator.dart';
-import 'package:todo_app/src/presentation/createtask/create_task_page.dart';
-import 'package:todo_app/src/presentation/routes/app_routes.dart';
+import 'package:todo_app/src/presentation/widgets/custom_app_bar.dart';
+
+import '../../utils/app_theme.dart';
+import '../createtask/widgets/task_form_widge.dart';
+import 'widget/custom_card_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,18 +12,25 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Home Page'),
-        ),
+        appBar: const AppBarWidget(),
         floatingActionButton: CircleAvatar(
+          backgroundColor: primaryColor,
           child: IconButton(
               onPressed: () {
-                AppRoutes.go(
-                  context: context,
-                  page: const CreateTaskPage(),
+                Navigator.push(
+                  context,
+                  ModalBottomSheetRoute(
+                      backgroundColor: Colors.white,
+                      builder: (context) {
+                        return const SizedBox(
+                          height: 700,
+                          child: TaskFormWidge(),
+                        );
+                      },
+                      isScrollControlled: true),
                 );
               },
-              icon: const Icon(Icons.add)),
+              icon: const Icon(Icons.edit)),
         ),
         body: BlocBuilder<TaskCubit, TaskState>(
           builder: (context, state) {
@@ -30,7 +40,7 @@ class HomePage extends StatelessWidget {
               );
             }
             if (state is TaskLoadedState) {
-              return const FlutterLogo();
+              return CustomCardWidget(taskState: state);
             }
             return Container();
           },

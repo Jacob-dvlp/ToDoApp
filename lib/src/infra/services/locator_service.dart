@@ -20,11 +20,12 @@ void setupLocator() {
     ),
   );
 
-  locator.registerLazySingleton(
-    () => TaskCubit(
+  locator.registerLazySingleton(() {
+    
+    return TaskCubit(
       taskUsecaseI: locator.get(),
-    ),
-  );
+    );
+  });
 
   locator.registerLazySingleton(
     () => SignInCubit(

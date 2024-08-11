@@ -3,6 +3,7 @@ import 'package:todo_app/src/presentation/home/home_page.dart';
 
 import 'app_exports.dart';
 import 'src/infra/services/locator_service.dart';
+import 'src/utils/app_theme.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -24,9 +25,10 @@ class AppWidget extends StatelessWidget {
           create: (context) => locator.get<TaskCubit>(),
         ),
       ],
-      child: const MaterialApp(
+      child:  MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        theme: lightTheme(context),
+        home: const HomePage(),
       ),
     );
   }
