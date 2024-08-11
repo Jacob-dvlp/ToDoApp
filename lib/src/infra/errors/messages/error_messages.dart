@@ -28,7 +28,6 @@ class ErrorMessages {
     if (code == networkRequestFailed) {
       status = "Problema com a conexão";
     }
-
     return status!;
   }
 }

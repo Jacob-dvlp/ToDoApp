@@ -1,4 +1,7 @@
 class AppConstants {
+  static const String taskTable =
+      'CREATE TABLE IF NOT EXISTS task (id INTEGER, title TEXT, date TEXT, description TEXT, isDone TEXT NOT NULL DEFAULT 0 ,PRIMARY KEY("id" AUTOINCREMENT))';
+
   static const String logo = "assets/logo/logotipo.svg";
 
   static const String createAccount = "Conta criada com Sucesso";

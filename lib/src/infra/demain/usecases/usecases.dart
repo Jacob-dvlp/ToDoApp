@@ -1,6 +1,9 @@
 export "package:dartz/dartz.dart";
+export 'package:todo_app/src/infra/demain/entities/task_entitie.dart';
 export 'package:todo_app/src/infra/demain/repository/sign_in_repository_i.dart';
 export 'package:todo_app/src/infra/demain/repository/sign_up_repository_i.dart';
+export 'package:todo_app/src/infra/demain/repository/task_repository_i.dart';
+export 'package:todo_app/src/infra/demain/usecases/interfaces/task_usecase_i.dart';
 
 export "../../errors/failure.dart";
 export '../../errors/messages/error_messages.dart';

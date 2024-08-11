@@ -1,5 +1,5 @@
 import 'package:flutter_svg/svg.dart';
-import 'package:todo_app/src/presentation/sign_in/controller/cubit/sign_in_cubit.dart';
+import 'package:todo_app/src/presentation/sign_in/controller/sign_in_cubit.dart';
 
 import '../../../../app_exports.dart';
 import '../../../utils/app_constants.dart';
