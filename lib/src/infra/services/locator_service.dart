@@ -1,5 +1,3 @@
-import "../core/reposistory/task_repository.dart";
-import "../demain/usecases/task_usecase_imp.dart";
 import "../demain/usecases/usecases.dart";
 import "locator.dart";
 
@@ -20,12 +18,20 @@ void setupLocator() {
     ),
   );
 
-  locator.registerLazySingleton(() {
-    
-    return TaskCubit(
-      taskUsecaseI: locator.get(),
-    );
-  });
+  locator.registerLazySingleton(
+    () {
+      return TaskCubit(
+        taskUsecaseI: locator.get(),
+      );
+    },
+    dispose: (param) => true,
+  );
+
+  locator.registerLazySingleton(
+    () => TaskDetailsCubit(
+      detailsUsecaseI: locator.get(),
+    ),
+  );
 
   locator.registerLazySingleton(
     () => SignInCubit(
@@ -51,6 +57,12 @@ void setupLocator() {
     ),
   );
 
+  locator.registerSingleton<DetailsRepositoryI>(
+    DetailsRepository(
+      taskDatabase: locator.get(),
+    ),
+  );
+
   locator.registerSingleton<SignUpUsecaseI>(
     SignUpUsecaseImp(
       signUpRepositoryI: locator.get(),
@@ -66,6 +78,12 @@ void setupLocator() {
   locator.registerSingleton<TaskUsecaseI>(
     TaskUsecaseImp(
       taskRepositoryI: locator.get(),
+    ),
+  );
+
+  locator.registerSingleton<DetailsUsecaseI>(
+    DetailsUsecaseImp(
+      detailsRepositoryI: locator.get(),
     ),
   );
 }

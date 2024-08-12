@@ -8,4 +8,5 @@ abstract interface class TaskUsecaseI {
       required String description});
 
   Future<Either<Failure, List<TaskEntitie?>>> getTaskList();
+
 }

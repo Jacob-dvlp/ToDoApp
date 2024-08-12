@@ -1,58 +1,111 @@
-import 'package:flutter/material.dart';
 import 'package:todo_app/app_exports.dart';
+import 'package:todo_app/src/infra/services/locator.dart';
+import 'package:todo_app/src/presentation/home/home_page.dart';
+import 'package:todo_app/src/presentation/routes/app_routes.dart';
 
+import '../../../infra/services/locator_service.dart';
+import '../../../utils/app_custom_message.dart';
 import '../../../utils/app_theme.dart';
 import '../../createtask/widgets/task_form_widge.dart';
 
 class Details extends StatelessWidget {
-  const Details({super.key});
+  final String id;
+  const Details({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Programar'),
-        centerTitle: true,
-      ),
-      floatingActionButton: CircleAvatar(
-        backgroundColor: primaryColor,
-        child: IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              ModalBottomSheetRoute(
-                  backgroundColor: Colors.white,
-                  builder: (context) {
-                    return const SizedBox(
-                      height: 700,
-                      child: TaskFormWidge(),
-                    );
-                  },
-                  isScrollControlled: true),
-            );
-          },
-          icon: const Icon(Icons.edit),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            SizedBox(
-              child: Text(
-                body,
-                style: Theme.of(context).textTheme.bodyMedium,
-                textAlign: TextAlign.center,
+    return BlocBuilder<TaskDetailsCubit, TaskDetailsState>(
+      builder: (context, state) {
+        if (state is TaskDetailsLoaded) {
+          return Scaffold(
+            appBar: AppBar(
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () async {
+                      context.read<TaskDetailsCubit>().deleteTaskById(id: id);
+                      Messages.showInfo(context, "Tarefa excluida com Sucesso");
+                      locator<TaskCubit>().getTaskList();
+                      return AppRoutes.pushReplecement(
+                          context: context, page: const HomePage());
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: primaryColor,
+                      child: const Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            floatingActionButton: CircleAvatar(
+              backgroundColor: primaryColor,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    ModalBottomSheetRoute(
+                        backgroundColor: Colors.white,
+                        builder: (context) {
+                          return SizedBox(
+                            height: 800,
+                            child: TaskFormWidge(
+                                isEditeTask: true, entitie: state.taskEntitie),
+                          );
+                        },
+                        isScrollControlled: true),
+                  );
+                },
+                icon: const Icon(Icons.edit),
               ),
             ),
-            const Text("03/junho/2012")
-          ],
-        ),
-      ),
+            body: BlocBuilder<TaskDetailsCubit, TaskDetailsState>(
+              builder: (context, state) {
+                if (state is TaskDetailsLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  );
+                }
+                if (state is TaskDetailsLoaded) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              state.taskEntitie!.title!,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            SizedBox(
+                              child: Text(
+                                state.taskEntitie!.description!,
+                                style: Theme.of(context).textTheme.bodyMedium,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Text(state.taskEntitie!.date!)
+                      ],
+                    ),
+                  );
+                }
+                return const SizedBox.shrink();
+              },
+            ),
+          );
+        }
+        return const SizedBox.shrink();
+      },
     );
   }
 }
-
-const body =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. laboris nisi ut aliquip ex ea commodo consequat.";

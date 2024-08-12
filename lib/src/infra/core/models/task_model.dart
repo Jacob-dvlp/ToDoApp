@@ -3,28 +3,31 @@ import 'dart:convert';
 import '../reposistory/repository.dart';
 
 class TaskModel extends TaskEntitie {
-  final int isDoneModel;
-  final String titleModel;
-  final String dateModel;
-  final String descriptionModel;
+  final String isDoneTask;
+  final String titleTask;
+  final int idTask;
+  final String dateTask;
+  final String descriptionTask;
 
   const TaskModel(
-      {required this.isDoneModel,
-      required this.titleModel,
-      required this.dateModel,
-      required this.descriptionModel})
+      {required this.isDoneTask,
+      required this.titleTask,
+      required this.dateTask,
+      required this.descriptionTask,
+      required this.idTask})
       : super(
-            date: dateModel,
-            description: descriptionModel,
-            isDone: isDoneModel,
-            title: titleModel);
+            date: dateTask,
+            description: descriptionTask,
+            isDone: isDoneTask,
+            title: titleTask,
+            id: idTask);
 
   Map<String, dynamic> toMap() {
     return {
-      'isDone': isDone,
-      'title': title,
-      'date': date,
-      'description': description,
+      'isDone': isDoneTask,
+      'title': titleTask,
+      'date': dateTask,
+      'description': descriptionTask,
     };
   }
 
@@ -32,11 +35,11 @@ class TaskModel extends TaskEntitie {
     if (map == null) return null;
     try {
       return TaskModel(
-        isDoneModel: map['isDone'],
-        titleModel: map['title'],
-        dateModel: map['date'],
-        descriptionModel: map['description'],
-      );
+          isDoneTask: map['isDone'],
+          titleTask: map['title'],
+          dateTask: map['date'],
+          descriptionTask: map['description'],
+          idTask: map['id']);
     } catch (e) {
       return null;
     }

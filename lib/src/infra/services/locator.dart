@@ -4,12 +4,17 @@ export 'package:get_it/get_it.dart';
 export "package:todo_app/src/infra/core/datasource/local/database.dart";
 export "package:todo_app/src/infra/core/reposistory/sign_in_repository.dart";
 export 'package:todo_app/src/infra/demain/repository/sign_up_repository_i.dart';
+export "package:todo_app/src/infra/demain/usecases/details_usecase_imp.dart";
 export "package:todo_app/src/infra/demain/usecases/sign_in_usecase_imp.dart";
 export "package:todo_app/src/presentation/sign_in/controller/sign_in_cubit.dart";
 
+export "../../presentation/home/details/controller/task_details_cubit.dart";
 export "../../presentation/shared/controller/task_cubit.dart";
 export "../../presentation/sign_up/controller/sign_up_cubit.dart";
 export '../core/datasource/firebase/client_firebase.dart';
+export "../core/reposistory/details_repository.dart";
 export '../core/reposistory/sign_up_repository.dart';
+export "../core/reposistory/task_repository.dart";
 export '../demain/usecases/interfaces/sign_up_usecase_i.dart';
 export '../demain/usecases/sign_up_usecase_imp.dart';
+export "../demain/usecases/task_usecase_imp.dart";

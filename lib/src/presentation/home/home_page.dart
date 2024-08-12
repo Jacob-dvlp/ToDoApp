@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
                       backgroundColor: Colors.white,
                       builder: (context) {
                         return const SizedBox(
-                          height: 700,
+                          height: 800,
                           child: TaskFormWidge(),
                         );
                       },
@@ -40,6 +40,11 @@ class HomePage extends StatelessWidget {
               );
             }
             if (state is TaskLoadedState) {
+              if (state.taskList!.isEmpty) {
+                return const Center(
+                  child: Text("Lista vazia"),
+                );
+              }
               return CustomCardWidget(taskState: state);
             }
             return Container();

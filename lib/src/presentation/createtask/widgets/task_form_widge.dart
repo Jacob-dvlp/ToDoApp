@@ -1,13 +1,19 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:todo_app/app_exports.dart';
 import 'package:todo_app/src/infra/services/locator.dart';
 import 'package:todo_app/src/infra/services/locator_service.dart';
+import 'package:todo_app/src/presentation/home/home_page.dart';
+import 'package:todo_app/src/utils/app_theme.dart';
 
+import '../../../infra/demain/entities/task_entitie.dart';
 import '../../../utils/app_custom_message.dart';
 import '../../routes/app_routes.dart';
-import '../../shared/controller/task_cubit.dart';
 
 class TaskFormWidge extends StatefulWidget {
-  const TaskFormWidge({super.key});
+  final bool isEditeTask;
+  final TaskEntitie? entitie;
+  const TaskFormWidge({super.key, this.isEditeTask = false, this.entitie});
 
   @override
   State<TaskFormWidge> createState() => _TaskFormWidgeState();
@@ -17,27 +23,39 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
   @override
+  void initState() {
+    descriptionController.text = widget.entitie?.description ?? "";
+    titleController.text = widget.entitie?.title ?? "";
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocConsumer<TaskCubit, TaskState>(
-      listener: buildBlocListener,
+    return BlocBuilder<TaskCubit, TaskState>(
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(30.0),
           child: Column(
             children: [
-              const Text(
-                "Escolhe Cor",
-                style: TextStyle(
+              Align(
+                  alignment: Alignment.topRight,
+                  child: GestureDetector(
+                    onTap: () => AppRoutes.close(context: context),
+                    child: CircleAvatar(
+                      backgroundColor: primaryColor,
+                      child: const Icon(Icons.close),
+                    ),
+                  )),
+              Text(
+                widget.isEditeTask ? "Atualizar a tarefa" : "Criar uma tarefa",
+                style: const TextStyle(
                   fontSize: 18,
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              TextFormField(
+              TextField(
                 controller: titleController,
                 decoration: const InputDecoration(
                   labelText: 'Titulo',
@@ -51,7 +69,7 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
                   ),
                 ),
               ),
-              TextFormField(
+              TextField(
                 maxLines: 5,
                 controller: descriptionController,
                 maxLength: 500,
@@ -75,29 +93,79 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
                   child: CircularProgressIndicator.adaptive(),
                 )
               else
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 130, vertical: 10),
-                    backgroundColor: const Color(0XFF038dff),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(6),
+                widget.isEditeTask
+                    ? ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 130, vertical: 10),
+                          backgroundColor: primaryColor,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(6),
+                            ),
+                          ),
+                        ),
+                        onPressed: () async {
+                          if (titleController.text.isEmpty ||
+                              descriptionController.text.isEmpty) {
+                            return Messages.showError(
+                                context, "Campos vazios não permetidos");
+                          } else {
+                            await context
+                                .read<TaskDetailsCubit>()
+                                .updateTaskById(
+                                  task: TaskEntitie(
+                                      title: titleController.text,
+                                      description: descriptionController.text,
+                                      id: widget.entitie!.id),
+                                );
+                            Messages.showSuccess(
+                                context, "Tarefa atualizada com Sucesso");
+                            locator<TaskCubit>().getTaskList();
+                            await locator<TaskDetailsCubit>()
+                                .getTaskById(id: widget.entitie!.id.toString());
+                            return AppRoutes.close(context: context);
+                          }
+                        },
+                        child: const Text(
+                          "Atualizar",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      )
+                    : ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 130, vertical: 10),
+                          backgroundColor: primaryColor,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(6),
+                            ),
+                          ),
+                        ),
+                        onPressed: () async {
+                          if (titleController.text.isEmpty ||
+                              descriptionController.text.isEmpty) {
+                            return Messages.showError(
+                                context, "Campos vazios não permetidos");
+                          } else {
+                            await context.read<TaskCubit>().createTask(
+                                isDone: "0",
+                                title: titleController.text,
+                                date: DateTime.now().toString(),
+                                description: descriptionController.text);
+                            Messages.showSuccess(
+                                context, "Tarefa criada com Sucesso");
+                            locator<TaskCubit>().getTaskList();
+                            return AppRoutes.go(
+                                context: context, page: const HomePage());
+                          }
+                        },
+                        child: const Text(
+                          "Criar",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
                       ),
-                    ),
-                  ),
-                  onPressed: () async {
-                    await context.read<TaskCubit>().createTask(
-                        isDone: "0",
-                        title: titleController.text,
-                        date: DateTime.now().toString(),
-                        description: descriptionController.text);
-                  },
-                  child: const Text(
-                    "Criar conta",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                ),
             ],
           ),
         );
@@ -106,13 +174,9 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
   }
 }
 
-buildBlocListener(BuildContext context, TaskState state) {
+buildBlocListener(BuildContext context, TaskState state) async {
   if (state is TaskLoadedState) {
-    if (state.value != 0) {
-      Messages.showSuccess(context, "Tarefa criada com Sucesso");
-      locator<TaskCubit>().getTaskList();
-      return AppRoutes.close(context: context);
-    }
+    if (state.value != 0) {}
   }
   if (state is TaskErrorState) {
     return Messages.showError(

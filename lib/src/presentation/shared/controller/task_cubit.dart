@@ -35,7 +35,6 @@ class TaskCubit extends Cubit<TaskState> {
 
   Future getTaskList() async {
     emit(TaskLoadingState());
-    await Future.delayed(const Duration(seconds: 8));
     final response = await taskUsecaseI.getTaskList();
     return response.fold(
         (error) => emit(
@@ -43,7 +42,7 @@ class TaskCubit extends Cubit<TaskState> {
             ), (data) {
       log(data.length.toString());
       emit(
-        TaskLoadedState(task: data),
+        TaskLoadedState(taskList: data),
       );
     });
   }

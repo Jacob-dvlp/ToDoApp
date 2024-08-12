@@ -24,8 +24,12 @@ class AppWidget extends StatelessWidget {
           lazy: false,
           create: (context) => locator.get<TaskCubit>(),
         ),
+        BlocProvider<TaskDetailsCubit>(
+          lazy: false,
+          create: (context) => locator.get<TaskDetailsCubit>(),
+        ),
       ],
-      child:  MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: lightTheme(context),
         home: const HomePage(),
