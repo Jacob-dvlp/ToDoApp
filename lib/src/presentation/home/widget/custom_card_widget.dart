@@ -1,6 +1,6 @@
 import 'package:todo_app/app_exports.dart';
-import 'package:todo_app/src/presentation/home/details/controller/task_details_cubit.dart';
-import 'package:todo_app/src/presentation/home/details/details.dart';
+import 'package:todo_app/src/presentation/details/controller/task_details_cubit.dart';
+import 'package:todo_app/src/presentation/details/details.dart';
 import 'package:todo_app/src/presentation/routes/app_routes.dart';
 
 import '../../../utils/app_theme.dart';
@@ -41,38 +41,41 @@ class CustomCardWidget extends StatelessWidget {
                 elevation: 10,
                 child: SizedBox(
                   height: 50,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(task!.title!),
-                            CircleAvatar(
-                              backgroundColor: primaryColor,
-                              child: const Icon(
-                                Icons.bookmark_border,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Flexible(
-                        child: Padding(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            task.description!,
-                            overflow: TextOverflow.fade,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontStyle: FontStyle.italic,
-                            ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(child: Text(task!.title!)),
+                              CircleAvatar(
+                                backgroundColor: primaryColor,
+                                child: const Icon(
+                                  Icons.bookmark_border,
+                                ),
+                              )
+                            ],
                           ),
                         ),
-                      )
-                    ],
+                        Flexible(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              task.description!,
+                              overflow: TextOverflow.fade,
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

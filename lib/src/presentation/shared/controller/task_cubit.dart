@@ -46,4 +46,17 @@ class TaskCubit extends Cubit<TaskState> {
       );
     });
   }
+
+  Future deleteAllTasks() async {
+    emit(TaskLoadingState());
+    final response = await taskUsecaseI.deleteAllTasks();
+    return response.fold(
+        (error) => emit(
+              TaskErrorState(error: error.error!),
+            ), (delete) {
+      emit(
+        TaskLoadedState(delete: delete),
+      );
+    });
+  }
 }

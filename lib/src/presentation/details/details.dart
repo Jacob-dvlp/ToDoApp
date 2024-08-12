@@ -3,10 +3,11 @@ import 'package:todo_app/src/infra/services/locator.dart';
 import 'package:todo_app/src/presentation/home/home_page.dart';
 import 'package:todo_app/src/presentation/routes/app_routes.dart';
 
-import '../../../infra/services/locator_service.dart';
-import '../../../utils/app_custom_message.dart';
-import '../../../utils/app_theme.dart';
-import '../../createtask/widgets/task_form_widge.dart';
+import '../../infra/services/locator_service.dart';
+import '../../utils/app_custom_message.dart';
+import '../../utils/app_theme.dart';
+import '../createtask/widgets/task_form_widge.dart';
+import 'widgets/custom_details_widget.dart';
 
 class Details extends StatelessWidget {
   final String id;
@@ -34,7 +35,6 @@ class Details extends StatelessWidget {
                       backgroundColor: primaryColor,
                       child: const Icon(
                         Icons.delete,
-                        color: Colors.red,
                       ),
                     ),
                   ),
@@ -70,33 +70,8 @@ class Details extends StatelessWidget {
                   );
                 }
                 if (state is TaskDetailsLoaded) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            Text(
-                              state.taskEntitie!.title!,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            SizedBox(
-                              child: Text(
-                                state.taskEntitie!.description!,
-                                style: Theme.of(context).textTheme.bodyMedium,
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Text(state.taskEntitie!.date!)
-                      ],
-                    ),
+                  return CustomDetailsWidget(
+                    state: state,
                   );
                 }
                 return const SizedBox.shrink();

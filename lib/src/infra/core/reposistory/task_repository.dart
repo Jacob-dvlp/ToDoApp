@@ -42,4 +42,17 @@ class TaskRepository implements TaskRepositoryI {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> deleteAllTasks() async {
+    try {
+      final dbClient = await taskDatabase.database;
+      await dbClient!.delete('task');
+      return const Right(true);
+    } catch (e) {
+      return const Left(
+        Failure(error: "Erro ao excluir a Lista"),
+      );
+    }
+  }
 }

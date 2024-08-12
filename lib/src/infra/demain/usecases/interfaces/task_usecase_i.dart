@@ -9,4 +9,5 @@ abstract interface class TaskUsecaseI {
 
   Future<Either<Failure, List<TaskEntitie?>>> getTaskList();
 
+  Future<Either<Failure, bool>> deleteAllTasks();
 }

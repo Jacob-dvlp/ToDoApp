@@ -58,7 +58,7 @@ ThemeData lightTheme(BuildContext context) {
     focusColor: const Color(0xffA8DAB5),
     disabledColor: Colors.grey,
     iconTheme: const IconThemeData(color: Color(0xff9D9AB4)),
-    cardColor: Colors.white,
+    cardColor: const Color(0xFFFFFFFF),
     brightness: Brightness.light,
     buttonTheme: Theme.of(context).buttonTheme.copyWith(
           colorScheme: const ColorScheme.light(),
@@ -74,9 +74,10 @@ ThemeData lightTheme(BuildContext context) {
         fontWeight: FontWeight.normal,
       ),
     ),
-    appBarTheme: const AppBarTheme(
+    appBarTheme:  AppBarTheme(
       elevation: 0.0,
-      iconTheme: IconThemeData(color: Color(0xff9D9AB4)),
+      backgroundColor: primaryColor,
+      iconTheme: const IconThemeData(color: Color(0xFFFFFFFF)),
     ),
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: primaryColor,

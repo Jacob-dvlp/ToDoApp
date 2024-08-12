@@ -40,4 +40,20 @@ class TaskUsecaseImp implements TaskUsecaseI {
       (data) => Right(data),
     );
   }
+
+  @override
+  Future<Either<Failure, bool>> deleteAllTasks() async {
+    final response = await taskRepositoryI.deleteAllTasks();
+
+    return response.fold(
+      (error) => Left(
+        Failure(
+          error: ErrorMessages.showMessage(
+            error.error!,
+          ),
+        ),
+      ),
+      (data) => Right(data),
+    );
+  }
 }
