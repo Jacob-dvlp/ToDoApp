@@ -4,10 +4,9 @@ import '../controller/task_details_cubit.dart';
 
 class CustomDetailsWidget extends StatelessWidget {
   final TaskDetailsLoaded state;
-  const CustomDetailsWidget({
-    super.key,
-    required this.state,
-  });
+  final bool taskIsCompleted;
+  const CustomDetailsWidget(
+      {super.key, required this.state, required this.taskIsCompleted});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class CustomDetailsWidget extends StatelessWidget {
             children: [
               Text(
                 state.taskEntitie!.title!,
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
               const SizedBox(
                 height: 30,
@@ -35,7 +34,10 @@ class CustomDetailsWidget extends StatelessWidget {
               ),
             ],
           ),
-          Text(state.taskEntitie!.date!)
+          Text(
+            state.taskEntitie!.date!,
+            style: Theme.of(context).textTheme.bodyMedium,
+          )
         ],
       ),
     );

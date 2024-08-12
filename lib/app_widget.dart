@@ -31,7 +31,7 @@ class AppWidget extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: lightTheme(context),
+        theme: darkTheme(context),
         home: const HomePage(),
       ),
     );

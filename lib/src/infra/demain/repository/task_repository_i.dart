@@ -6,6 +6,9 @@ abstract interface class TaskRepositoryI {
       required String title,
       required String date,
       required String description});
+  Future<Either<Failure, bool>> completetask(
+      {required int id, required String isDone});
   Future<Either<Failure, List<TaskEntitie?>>> getTaskList();
+  
   Future<Either<Failure, bool>> deleteAllTasks();
 }

@@ -11,7 +11,12 @@ import 'widgets/custom_details_widget.dart';
 
 class Details extends StatelessWidget {
   final String id;
-  const Details({super.key, required this.id});
+  final bool taskIsCompleted;
+  const Details({
+    super.key,
+    required this.id,
+    this.taskIsCompleted = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +53,6 @@ class Details extends StatelessWidget {
                   Navigator.push(
                     context,
                     ModalBottomSheetRoute(
-                        backgroundColor: Colors.white,
                         builder: (context) {
                           return SizedBox(
                             height: 800,
@@ -72,6 +76,7 @@ class Details extends StatelessWidget {
                 if (state is TaskDetailsLoaded) {
                   return CustomDetailsWidget(
                     state: state,
+                    taskIsCompleted: true,
                   );
                 }
                 return const SizedBox.shrink();

@@ -57,32 +57,20 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
               ),
               TextField(
                 controller: titleController,
+                cursorColor: Colors.white,
+                style: const TextStyle(color: Colors.white),
                 decoration: const InputDecoration(
                   labelText: 'Titulo',
-                  labelStyle: TextStyle(
-                    color: Colors.blueGrey,
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.blueGrey,
-                    ),
-                  ),
                 ),
               ),
               TextField(
                 maxLines: 5,
+                cursorColor: Colors.white,
+                style: const TextStyle(color: Colors.white),
                 controller: descriptionController,
                 maxLength: 500,
                 decoration: const InputDecoration(
                   labelText: 'Descrição',
-                  labelStyle: TextStyle(
-                    color: Colors.blueGrey,
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.blueGrey,
-                    ),
-                  ),
                 ),
               ),
               const SizedBox(
