@@ -12,43 +12,44 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const AppBarWidget(),
-        floatingActionButton: CircleAvatar(
-          backgroundColor: primaryColor,
-          child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  ModalBottomSheetRoute(
-                      backgroundColor: Colors.white,
-                      builder: (context) {
-                        return const SizedBox(
-                          height: 800,
-                          child: TaskFormWidge(),
-                        );
-                      },
-                      isScrollControlled: true),
-                );
-              },
-              icon: const Icon(Icons.edit)),
-        ),
-        body: BlocBuilder<TaskCubit, TaskState>(
-          builder: (context, state) {
-            if (state is TaskLoadingState) {
+      appBar: const AppBarWidget(),
+      floatingActionButton: CircleAvatar(
+        backgroundColor: primaryColor,
+        child: IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                ModalBottomSheetRoute(
+                    backgroundColor: Colors.white,
+                    builder: (context) {
+                      return const SizedBox(
+                        height: 800,
+                        child: TaskFormWidge(),
+                      );
+                    },
+                    isScrollControlled: true),
+              );
+            },
+            icon: const Icon(Icons.edit)),
+      ),
+      body: BlocBuilder<TaskCubit, TaskState>(
+        builder: (context, state) {
+          if (state is TaskLoadingState) {
+            return const Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
+          }
+          if (state is TaskLoadedState) {
+            if (state.taskList!.isEmpty) {
               return const Center(
-                child: CircularProgressIndicator.adaptive(),
+                child: Text("Lista vazia"),
               );
             }
-            if (state is TaskLoadedState) {
-              if (state.taskList!.isEmpty) {
-                return const Center(
-                  child: Text("Lista vazia"),
-                );
-              }
-              return CustomCardWidget(taskState: state);
-            }
-            return Container();
-          },
-        ));
+            return CustomCardWidget(taskState: state);
+          }
+          return Container();
+        },
+      ),
+    );
   }
 }
