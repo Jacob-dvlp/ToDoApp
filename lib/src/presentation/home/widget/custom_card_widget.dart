@@ -67,7 +67,7 @@ class CustomCardWidget extends StatelessWidget {
                                   controller.openEndActionPane();
                                 },
                                 backgroundColor: primaryColor,
-                                foregroundColor: Colors.green,
+                                foregroundColor: Colors.white,
                                 icon: Icons.check,
                                 label: 'Feito',
                                 autoClose: true,

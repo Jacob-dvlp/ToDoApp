@@ -106,17 +106,18 @@ Future<void> showAlertDialog(BuildContext context) async {
     builder: (BuildContext context) {
       return AlertDialog(
         title: Text(
-          'Filtrar tarefa',
+          'Filtrar tarefas',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
+        titlePadding: const EdgeInsets.only(left: 100,right: 100,top: 25),
         content: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextButton(
-                style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Colors.green)),
+                style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(primaryColor)),
                 onPressed: () {
                   context.read<TaskCubit>().getTaskList(filter: "0");
                   AppRoutes.close(context: context);
@@ -130,9 +131,9 @@ Future<void> showAlertDialog(BuildContext context) async {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextButton(
-                style: ButtonStyle(
+                style: const ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(
-                    primaryColor,
+                    Colors.green,
                   ),
                 ),
                 onPressed: () {
@@ -148,11 +149,12 @@ Future<void> showAlertDialog(BuildContext context) async {
             Padding(
               padding: const EdgeInsets.all(2.0),
               child: TextButton(
-                style: const ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(
-                    Colors.red,
-                  ),
-                ),
+                style: ButtonStyle(
+                    backgroundColor: const WidgetStatePropertyAll(
+                      Colors.red,
+                    ),
+                    textStyle:
+                        WidgetStatePropertyAll(TextStyle(color: primaryColor))),
                 onPressed: () {
                   context.read<TaskCubit>().getTaskList();
                   AppRoutes.close(context: context);
