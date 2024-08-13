@@ -1,5 +1,4 @@
 import 'package:todo_app/src/infra/services/locator.dart';
-import 'package:todo_app/src/presentation/home/home_page.dart';
 import 'package:todo_app/src/presentation/sign_in/sign_in_page.dart';
 
 import 'app_exports.dart';
@@ -14,6 +13,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
+      key: const Key("bloc"),
       providers: [
         BlocProvider<SignUpCubit>(
           create: (context) => locator.get<SignUpCubit>(),
@@ -34,7 +34,7 @@ class AppWidget extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: darkTheme(context),
-        home: accessToken ? const HomePage() : const SignInPage(),
+        home: const SignInPage(),
       ),
     );
   }

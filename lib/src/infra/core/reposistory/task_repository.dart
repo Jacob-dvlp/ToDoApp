@@ -74,19 +74,4 @@ class TaskRepository implements TaskRepositoryI {
       return const Left(Failure(error: "Erro ao atualizar a tarefa"));
     }
   }
-
-  // @override
-  // Future<Either<Failure, List<TaskEntitie?>>> filterTask({required}) async {
-  //   try {
-  //     final dbClient = await taskDatabase.database;
-  //     final List<Map<String, Object?>> queryResult = await dbClient!
-  //         .rawQuery('''SELECT * FROM $tableName WHERE $where==$whereTerm;''');
-  //     final taskList = queryResult.map((e) => TaskModel.fromMap(e)).toList();
-  //     return Right(taskList);
-  //   } catch (e) {
-  //     return const Left(
-  //       Failure(error: "Erro ao buscar Tasks"),
-  //     );
-  //   }
-  // }
 }

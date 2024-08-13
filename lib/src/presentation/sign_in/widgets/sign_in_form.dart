@@ -30,16 +30,19 @@ class _SignInFormState extends State<SignInForm> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               SvgPicture.asset(
+                key: const Key("logo"),
                 AppConstants.logo,
                 semanticsLabel: 'Logo',
               ),
               Column(children: [
                 CustomTextFormField(
+                  key: const Key("email-field"),
                   labelText: "Email",
                   textEditingController: emailController,
                 ),
                 const SizedBox(height: 30),
                 CustomTextFormField(
+                  key: const Key("password-field"),
                   textEditingController: passwordController,
                   labelText: "Senha",
                 ),
@@ -50,6 +53,7 @@ class _SignInFormState extends State<SignInForm> {
                   )
                 else
                   ElevatedButton(
+                    key: const Key("ElevatedButton-login"),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 160, vertical: 10),
@@ -66,6 +70,7 @@ class _SignInFormState extends State<SignInForm> {
                           password: passwordController.text);
                     },
                     child: Text(
+                      key: const Key("Text-entrar"),
                       "Entrar",
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
