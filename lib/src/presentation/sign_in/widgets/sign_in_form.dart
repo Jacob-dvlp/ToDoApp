@@ -6,7 +6,6 @@ import '../../../utils/app_constants.dart';
 import '../../../utils/app_custom_message.dart';
 import '../../home/home_page.dart';
 import '../../routes/app_routes.dart';
-import '../../sign_up/widget/todo_text_field.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
@@ -34,23 +33,17 @@ class _SignInFormState extends State<SignInForm> {
                 semanticsLabel: 'Logo',
               ),
               Column(children: [
-                TodoTextField(
-                  label: "E-mail",
+                TextField(
+                  decoration: const InputDecoration(label: Text("Email")),
                   controller: emailController,
-                  labelTextStyle: Theme.of(context)
-                      .textTheme
-                      .labelLarge
-                      ?.copyWith(color: const Color(0xff9D9AB4)),
                 ),
                 const SizedBox(height: 30),
-                TodoTextField(
-                  label: "Senha",
+                TextField(
+                  decoration: const InputDecoration(
+                    label: Text("Senha"),
+                  ),
                   obscureText: true,
                   controller: passwordController,
-                  labelTextStyle: Theme.of(context)
-                      .textTheme
-                      .labelLarge
-                      ?.copyWith(color: const Color(0xff9D9AB4)),
                 ),
                 const SizedBox(height: 35),
                 if (state is LoadingSignInState)
@@ -74,20 +67,19 @@ class _SignInFormState extends State<SignInForm> {
                           email: emailController.text,
                           password: passwordController.text);
                     },
-                    child: const Text(
+                    child:  Text(
                       "Entrar",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
                 const SizedBox(
                   height: 20,
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const Text("Não possuí uma conta? ",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                      )),
+                  Text(
+                    "Não possuí uma conta? ",
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
                   GestureDetector(
                     onTap: () {
                       AppRoutes.pushReplecement(

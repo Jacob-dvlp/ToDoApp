@@ -7,7 +7,8 @@ class ErrorMessages {
   static const String operationNotAllowed = "operation-not-allowed";
   static const String invalidCredential = "invalid-credential";
   static const String networkRequestFailed = "network-request-failed";
-  static String? status = "Erro no servidor";
+  static String? status = "Erro no servidor ou problema com a conexão";
+  static String? emptyFields = "Campos vazios";
 
   static String showMessage(String code) {
     if (code == weakPassword) {

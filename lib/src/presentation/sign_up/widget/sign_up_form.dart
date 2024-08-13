@@ -9,7 +9,6 @@ import '../../home/home_page.dart';
 import '../../routes/app_routes.dart';
 import '../../sign_in/sign_in_page.dart';
 import '../controller/sign_up_cubit.dart';
-import 'todo_text_field.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({
@@ -39,23 +38,18 @@ class _SignUpFormState extends State<SignUpForm> {
                 semanticsLabel: 'Logo',
               ),
               Column(children: [
-                TodoTextField(
-                  label: "E-mail",
+                TextField(
+                  decoration: const InputDecoration(
+                    label: Text("Email"),
+                  ),
                   controller: emailController,
-                  labelTextStyle: Theme.of(context)
-                      .textTheme
-                      .labelLarge
-                      ?.copyWith(color: const Color(0xff9D9AB4)),
                 ),
                 const SizedBox(height: 30),
-                TodoTextField(
-                  label: "Senha",
-                  obscureText: true,
+                TextField(
+                  decoration: const InputDecoration(
+                    label: Text("Senha"),
+                  ),
                   controller: passwordController,
-                  labelTextStyle: Theme.of(context)
-                      .textTheme
-                      .labelLarge
-                      ?.copyWith(color: const Color(0xff9D9AB4)),
                 ),
                 const SizedBox(height: 35),
                 if (state is LoadingSignUpState)
@@ -80,23 +74,21 @@ class _SignUpFormState extends State<SignUpForm> {
                             password: passwordController.text,
                           );
                     },
-                    child: const Text(
+                    child:  Text(
                       "Criar conta",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
                 const SizedBox(
                   height: 20,
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const Text("Já possuí uma conta? ",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                      )),
+                   Text("Já possuí uma conta? ",
+                      style:Theme.of(context).textTheme.bodyMedium,),
                   GestureDetector(
                     onTap: () {
-                      AppRoutes.pushReplecement(context: context, page: const SignInPage());
+                      AppRoutes.pushReplecement(
+                          context: context, page: const SignInPage());
                     },
                     child: const Text(
                       "Entrar",

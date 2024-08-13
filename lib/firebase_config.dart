@@ -23,4 +23,13 @@ class DefaultFirebaseOptions {
     storageBucket: 'todoapp-8f063.appspot.com',
     measurementId: 'G-3GFYMMDJKX',
   );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCnylVqPnpb_jgSvOMVNKiULv0OmZX_QXI',
+    appId: '1:66875146555:ios:0429ff04362516c9c4371e',
+    messagingSenderId: '66875146555',
+    projectId: 'todoapp-8f063',
+    storageBucket: 'todoapp-8f063.appspot.com',
+    iosBundleId: 'com.example.todoApp',
+  );
 }

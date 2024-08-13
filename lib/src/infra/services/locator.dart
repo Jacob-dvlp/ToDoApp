@@ -1,4 +1,3 @@
-export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:firebase_auth/firebase_auth.dart';
 export 'package:get_it/get_it.dart';
 export "package:todo_app/src/infra/core/datasource/local/database.dart";

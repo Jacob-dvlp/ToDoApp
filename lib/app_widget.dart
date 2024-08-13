@@ -1,5 +1,5 @@
 import 'package:todo_app/src/infra/services/locator.dart';
-import 'package:todo_app/src/presentation/home/home_page.dart';
+import 'package:todo_app/src/presentation/sign_in/sign_in_page.dart';
 
 import 'app_exports.dart';
 import 'src/infra/services/locator_service.dart';
@@ -32,7 +32,7 @@ class AppWidget extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: darkTheme(context),
-        home: const HomePage(),
+        home: const SignInPage(),
       ),
     );
   }
