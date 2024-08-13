@@ -6,9 +6,10 @@ import 'package:todo_app/src/infra/services/locator_service.dart';
 import 'package:todo_app/src/presentation/home/home_page.dart';
 import 'package:todo_app/src/utils/app_theme.dart';
 
-import '../../../infra/demain/entities/task_entitie.dart';
-import '../../../utils/app_custom_message.dart';
-import '../../routes/app_routes.dart';
+import '../../infra/demain/entities/task_entitie.dart';
+import '../../utils/app_custom_message.dart';
+import '../routes/app_routes.dart';
+import '../widgets/custom_text_form_field.dart';
 
 class TaskFormWidge extends StatefulWidget {
   final bool isEditeTask;
@@ -55,23 +56,13 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
               const SizedBox(
                 height: 20,
               ),
-              TextField(
-                controller: titleController,
-                cursorColor: Colors.white,
-                style: const TextStyle(color: Colors.white),
-                decoration: const InputDecoration(
-                  labelText: 'Titulo',
-                ),
+              CustomTextFormField(
+                labelText: 'Titulo',
+                textEditingController: titleController,
               ),
-              TextField(
-                maxLines: 5,
-                cursorColor: Colors.white,
-                style: const TextStyle(color: Colors.white),
-                controller: descriptionController,
-                maxLength: 500,
-                decoration: const InputDecoration(
-                  labelText: 'Descrição',
-                ),
+              CustomTextFormField(
+                labelText: 'Descrição',
+                textEditingController: descriptionController,
               ),
               const SizedBox(
                 height: 20,

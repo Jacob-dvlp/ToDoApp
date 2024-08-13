@@ -8,6 +8,7 @@ import '../../../utils/app_custom_message.dart';
 import '../../home/home_page.dart';
 import '../../routes/app_routes.dart';
 import '../../sign_in/sign_in_page.dart';
+import '../../widgets/custom_text_form_field.dart';
 import '../controller/sign_up_cubit.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -38,18 +39,14 @@ class _SignUpFormState extends State<SignUpForm> {
                 semanticsLabel: 'Logo',
               ),
               Column(children: [
-                TextField(
-                  decoration: const InputDecoration(
-                    label: Text("Email"),
-                  ),
-                  controller: emailController,
+                CustomTextFormField(
+                  labelText: "Email",
+                  textEditingController: emailController,
                 ),
                 const SizedBox(height: 30),
-                TextField(
-                  decoration: const InputDecoration(
-                    label: Text("Senha"),
-                  ),
-                  controller: passwordController,
+                CustomTextFormField(
+                  textEditingController: passwordController,
+                  labelText: "Senha",
                 ),
                 const SizedBox(height: 35),
                 if (state is LoadingSignUpState)
@@ -74,7 +71,7 @@ class _SignUpFormState extends State<SignUpForm> {
                             password: passwordController.text,
                           );
                     },
-                    child:  Text(
+                    child: Text(
                       "Criar conta",
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
@@ -83,8 +80,10 @@ class _SignUpFormState extends State<SignUpForm> {
                   height: 20,
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                   Text("Já possuí uma conta? ",
-                      style:Theme.of(context).textTheme.bodyMedium,),
+                  Text(
+                    "Já possuí uma conta? ",
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
                   GestureDetector(
                     onTap: () {
                       AppRoutes.pushReplecement(

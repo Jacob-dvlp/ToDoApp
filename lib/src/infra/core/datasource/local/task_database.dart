@@ -19,11 +19,10 @@ class TaskDatabase {
   Future<Database> initializeDatabaseUser() async {
     Directory documentDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentDirectory.path, "task.db");
-    var database = await openDatabase(
-      path,
-      version: 1,
-      onCreate: (db, version) async => await db.execute(AppConstants.taskTable),
-    );
+    var database =
+        await openDatabase(path, version: 1, onCreate: (db, version) async {
+      await db.execute(AppConstants.taskTable);
+    });
     return database;
   }
 }

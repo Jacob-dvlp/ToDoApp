@@ -1,4 +1,6 @@
-import "../demain/usecases/usecases.dart";
+import "package:todo_app/src/infra/core/datasource/local/user_database.dart";
+
+import "../../presentation/shared/user/user_cubit.dart";
 import "locator.dart";
 
 GetIt locator = GetIt.instance;
@@ -9,12 +11,19 @@ void setupLocator() {
       firebaseAuth: FirebaseAuth.instance,
     ),
   );
-
   locator.registerSingleton<TaskDatabase>(TaskDatabase());
+  locator.registerSingleton<UserDatabase>(UserDatabase());
 
   locator.registerLazySingleton(
     () => SignUpCubit(
+      userLocalUsecaseI: locator.get(),
       signUpUsecaseI: locator.get(),
+    ),
+  );
+
+  locator.registerLazySingleton(
+    () => UserCubit(
+      usecaseI: locator.get(),
     ),
   );
 
@@ -35,8 +44,13 @@ void setupLocator() {
 
   locator.registerLazySingleton(
     () => SignInCubit(
+      userLocalUsecaseI: locator.get(),
       signInUsecaseI: locator.get(),
     ),
+  );
+
+  locator.registerSingleton<UserLocalRepositoryI>(
+    UserLocalRepository(userDatabase: locator.get()),
   );
 
   locator.registerSingleton<SignInRepositoryI>(
@@ -60,6 +74,12 @@ void setupLocator() {
   locator.registerSingleton<DetailsRepositoryI>(
     DetailsRepository(
       taskDatabase: locator.get(),
+    ),
+  );
+
+  locator.registerSingleton<UserLocalUsecaseI>(
+    UserLocalUsecaseImp(
+      userLocalRepositoryI: locator.get(),
     ),
   );
 

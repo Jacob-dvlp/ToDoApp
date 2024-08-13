@@ -12,3 +12,4 @@ export '../entities/entities.dart';
 export 'interfaces/details_usecase_i.dart';
 export 'interfaces/sign_in_usecase_i.dart';
 export 'interfaces/sign_up_usecase_i.dart';
+export 'interfaces/user_local_usecase_i.dart';

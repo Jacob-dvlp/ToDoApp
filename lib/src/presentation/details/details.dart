@@ -6,7 +6,7 @@ import 'package:todo_app/src/presentation/routes/app_routes.dart';
 import '../../infra/services/locator_service.dart';
 import '../../utils/app_custom_message.dart';
 import '../../utils/app_theme.dart';
-import '../createtask/widgets/task_form_widge.dart';
+import '../createtask/task_form_widge.dart';
 import 'widgets/custom_details_widget.dart';
 
 class Details extends StatelessWidget {

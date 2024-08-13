@@ -1,4 +1,4 @@
-import 'controller.dart';
+import '../controller/controller.dart';
 
 part 'task_state.dart';
 

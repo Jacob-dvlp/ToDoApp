@@ -1,9 +1,12 @@
 import 'package:todo_app/app_exports.dart';
 import 'package:todo_app/src/infra/services/locator.dart';
 import 'package:todo_app/src/presentation/routes/app_routes.dart';
+import 'package:todo_app/src/presentation/shared/user/user_cubit.dart';
+import 'package:todo_app/src/presentation/sign_in/sign_in_page.dart';
 
+import '../../utils/app_custom_message.dart';
 import '../../utils/app_theme.dart';
-import '../createtask/widgets/task_form_widge.dart';
+import '../createtask/task_form_widge.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({super.key});
@@ -29,18 +32,37 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, top: 40),
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                            backgroundColor: primaryColor,
-                            child: const Text("J")),
-                      ],
-                    ),
-                  ),
+                BlocConsumer<UserCubit, UserState>(
+                  listener: buildBlocListener,
+                  builder: (context, state) {
+                    if (state is UserLoadedState) {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 20.0, top: 40),
+                        child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () => showAlertDialogExitApp(context),
+                                child: CircleAvatar(
+                                    backgroundColor: primaryColor,
+                                    child: Text(
+                                      state.userEntite!.userEmail![0]
+                                          .toUpperCase(),
+                                    )),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    if (state is UserLoadingState) {
+                      return const Center(
+                        child: CircularProgressIndicator.adaptive(),
+                      );
+                    }
+                    return Container();
+                  },
                 ),
                 GestureDetector(
                   onTap: () async {
@@ -109,7 +131,7 @@ Future<void> showAlertDialog(BuildContext context) async {
           'Filtrar tarefas',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
-        titlePadding: const EdgeInsets.only(left: 100,right: 100,top: 25),
+        titlePadding: const EdgeInsets.only(left: 100, right: 100, top: 25),
         content: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -171,4 +193,52 @@ Future<void> showAlertDialog(BuildContext context) async {
       );
     },
   );
+}
+
+Future<void> showAlertDialogExitApp(BuildContext context) async {
+  return await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(
+          'Sair do Aplicativo',
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+        content: const Text("Tem a certeza ?"),
+        actions: [
+          TextButton(
+            onPressed: () {
+              AppRoutes.close(context: context);
+            },
+            child: Text(
+              'Cancelar',
+              style: Theme.of(context).textTheme.labelSmall,
+            ),
+          ),
+          TextButton(
+            onPressed: () async {
+              context.read<UserCubit>().logout();
+              AppRoutes.close(context: context);
+            },
+            child: Text(
+              'Sair',
+              style: Theme.of(context).textTheme.labelSmall,
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+buildBlocListener(BuildContext context, UserState state) {
+  if (state is UserLogoutState) {
+    AppRoutes.pushReplecement(context: context, page: const SignInPage());
+  }
+  if (state is UserErrorState) {
+    return Messages.showError(
+      context,
+      state.error,
+    );
+  }
 }

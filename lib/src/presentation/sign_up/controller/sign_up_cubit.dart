@@ -6,12 +6,12 @@ part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   final SignUpUsecaseI signUpUsecaseI;
+  final UserLocalUsecaseI userLocalUsecaseI;
 
   ReponseEntitie? reponseEntitie;
 
-  SignUpCubit({
-    required this.signUpUsecaseI,
-  }) : super(InitialSignUpState());
+  SignUpCubit({required this.signUpUsecaseI, required this.userLocalUsecaseI})
+      : super(InitialSignUpState());
 
   Future signUp({required String email, required String password}) async {
     emit(
@@ -27,9 +27,12 @@ class SignUpCubit extends Cubit<SignUpState> {
           ),
         );
       },
-      (data) {
+      (data) async {
         log(data.userUid!);
-
+        final userEntite =
+            UserEntite(userEmail: data.userEmail, userUid: data.userUid);
+        await userLocalUsecaseI.createUserInLocalStorege(
+            userEntite: userEntite);
         return emit(
           LoadedSignUpState(
             userEntite: data,

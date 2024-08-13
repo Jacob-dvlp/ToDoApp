@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:todo_app/src/infra/demain/usecases/usecases.dart';
@@ -8,9 +6,9 @@ part 'sign_in_state.dart';
 
 class SignInCubit extends Cubit<SignInState> {
   final SignInUsecaseI signInUsecaseI;
-  SignInCubit({
-    required this.signInUsecaseI,
-  }) : super(SignInInitial());
+  final UserLocalUsecaseI userLocalUsecaseI;
+  SignInCubit({required this.signInUsecaseI, required this.userLocalUsecaseI})
+      : super(SignInInitial());
 
   Future signIn({required String email, required String password}) async {
     emit(
@@ -26,8 +24,11 @@ class SignInCubit extends Cubit<SignInState> {
           ),
         );
       },
-      (data) {
-        log(data.userUid!);
+      (data) async {
+        final userEntite =
+            UserEntite(userEmail: data.userEmail, userUid: data.userUid);
+        await userLocalUsecaseI.createUserInLocalStorege(
+            userEntite: userEntite);
 
         return emit(
           LoadedSignInState(

@@ -6,6 +6,7 @@ import '../../../utils/app_constants.dart';
 import '../../../utils/app_custom_message.dart';
 import '../../home/home_page.dart';
 import '../../routes/app_routes.dart';
+import '../../widgets/custom_text_form_field.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
@@ -33,17 +34,14 @@ class _SignInFormState extends State<SignInForm> {
                 semanticsLabel: 'Logo',
               ),
               Column(children: [
-                TextField(
-                  decoration: const InputDecoration(label: Text("Email")),
-                  controller: emailController,
+                CustomTextFormField(
+                  labelText: "Email",
+                  textEditingController: emailController,
                 ),
                 const SizedBox(height: 30),
-                TextField(
-                  decoration: const InputDecoration(
-                    label: Text("Senha"),
-                  ),
-                  obscureText: true,
-                  controller: passwordController,
+                CustomTextFormField(
+                  textEditingController: passwordController,
+                  labelText: "Senha",
                 ),
                 const SizedBox(height: 35),
                 if (state is LoadingSignInState)
@@ -67,7 +65,7 @@ class _SignInFormState extends State<SignInForm> {
                           email: emailController.text,
                           password: passwordController.text);
                     },
-                    child:  Text(
+                    child: Text(
                       "Entrar",
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),

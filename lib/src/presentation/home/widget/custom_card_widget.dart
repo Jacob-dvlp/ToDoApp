@@ -7,7 +7,7 @@ import 'package:todo_app/src/presentation/details/details.dart';
 import 'package:todo_app/src/presentation/routes/app_routes.dart';
 
 import '../../../utils/app_theme.dart';
-import '../../shared/controller/task_cubit.dart';
+import '../../shared/task/task_cubit.dart';
 
 class CustomCardWidget extends StatelessWidget {
   final TaskLoadedState taskState;
