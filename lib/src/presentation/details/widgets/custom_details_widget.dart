@@ -34,10 +34,6 @@ class CustomDetailsWidget extends StatelessWidget {
               ),
             ],
           ),
-          Text(
-            state.taskEntitie!.date!,
-            style: Theme.of(context).textTheme.bodyMedium,
-          )
         ],
       ),
     );

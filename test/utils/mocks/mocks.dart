@@ -1,5 +1,4 @@
 import 'package:mockito/annotations.dart';
-import 'package:todo_app/src/infra/core/reposistory/repository.dart';
 import 'package:todo_app/src/infra/services/locator.dart';
 
 @GenerateMocks([
