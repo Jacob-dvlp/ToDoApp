@@ -11,11 +11,11 @@ export "package:todo_app/src/infra/demain/repository/user_repository_i.dart";
 export "package:todo_app/src/infra/demain/usecases/details_usecase_imp.dart";
 export "package:todo_app/src/infra/demain/usecases/interfaces/user_local_usecase_i.dart";
 export "package:todo_app/src/infra/demain/usecases/sign_in_usecase_imp.dart";
-export "package:todo_app/src/presentation/sign_in/controller/sign_in_cubit.dart";
+export "package:todo_app/presentation/sign_in/controller/sign_in_cubit.dart";
 
-export "../../presentation/details/controller/task_details_cubit.dart";
-export "../../presentation/shared/task/task_cubit.dart";
-export "../../presentation/sign_up/controller/sign_up_cubit.dart";
+export "../../../presentation/details/controller/task_details_cubit.dart";
+export "../../../presentation/shared/task/task_cubit.dart";
+export "../../../presentation/sign_up/controller/sign_up_cubit.dart";
 export '../core/datasource/firebase/client_firebase.dart';
 export "../core/reposistory/details_repository.dart";
 export '../core/reposistory/sign_up_repository.dart';

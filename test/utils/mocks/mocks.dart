@@ -12,6 +12,6 @@ import 'package:todo_app/src/infra/services/locator.dart';
   UserCredential,
   TaskRepositoryI,
   DetailsUsecaseImp,
-  DetailsRepositoryI
+  DetailsRepositoryI,
 ])
 void main() {}

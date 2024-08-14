@@ -3,7 +3,7 @@ import 'package:mockito/mockito.dart';
 import 'package:todo_app/src/infra/core/reposistory/repository.dart';
 import 'package:todo_app/src/infra/services/locator.dart';
 
-import '../../../../utils/mocks/mocks.mocks.dart';
+import '../../../utils/mocks/mocks.mocks.dart';
 
 void main() {
   late final SignUpRepositoryI mocksignUpRepository;

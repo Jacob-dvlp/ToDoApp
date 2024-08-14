@@ -2,11 +2,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:todo_app/app_exports.dart';
 import 'package:todo_app/src/infra/services/locator_service.dart';
-import 'package:todo_app/src/presentation/details/controller/task_details_cubit.dart';
-import 'package:todo_app/src/presentation/details/details.dart';
-import 'package:todo_app/src/presentation/routes/app_routes.dart';
+import 'package:todo_app/presentation/details/controller/task_details_cubit.dart';
+import 'package:todo_app/presentation/details/details.dart';
+import 'package:todo_app/presentation/routes/app_routes.dart';
 
-import '../../../utils/app_theme.dart';
+import '../../../src/utils/app_theme.dart';
 import '../../shared/task/task_cubit.dart';
 
 class CustomCardWidget extends StatelessWidget {

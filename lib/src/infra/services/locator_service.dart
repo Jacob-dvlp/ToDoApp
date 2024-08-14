@@ -1,6 +1,6 @@
 import "package:todo_app/src/infra/core/datasource/local/user_database.dart";
 
-import "../../presentation/shared/user/user_cubit.dart";
+import "../../../presentation/shared/user/user_cubit.dart";
 import "locator.dart";
 
 GetIt locator = GetIt.instance;

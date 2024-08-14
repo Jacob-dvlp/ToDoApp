@@ -3,11 +3,11 @@
 import 'package:todo_app/app_exports.dart';
 import 'package:todo_app/src/infra/services/locator.dart';
 import 'package:todo_app/src/infra/services/locator_service.dart';
-import 'package:todo_app/src/presentation/home/home_page.dart';
+import 'package:todo_app/presentation/home/home_page.dart';
 import 'package:todo_app/src/utils/app_theme.dart';
 
-import '../../infra/demain/entities/task_entitie.dart';
-import '../../utils/app_custom_message.dart';
+import '../../src/infra/demain/entities/task_entitie.dart';
+import '../../src/utils/app_custom_message.dart';
 import '../routes/app_routes.dart';
 import '../widgets/custom_text_form_field.dart';
 
@@ -91,7 +91,7 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
                           if (titleController.text.isEmpty ||
                               descriptionController.text.isEmpty) {
                             return Messages.showError(
-                                context, "Campos vazios não permetidos");
+                                context, "Campos vazios não são permetidos");
                           } else {
                             await context
                                 .read<TaskDetailsCubit>()
@@ -130,7 +130,7 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
                           if (titleController.text.isEmpty ||
                               descriptionController.text.isEmpty) {
                             return Messages.showError(
-                                context, "Campos vazios não permetidos");
+                                context, "Campos vazios não são permetidos");
                           } else {
                             await context.read<TaskCubit>().createTask(
                                 isDone: "0",

@@ -1,11 +1,11 @@
 import 'package:todo_app/app_exports.dart';
 import 'package:todo_app/src/infra/services/locator.dart';
-import 'package:todo_app/src/presentation/routes/app_routes.dart';
-import 'package:todo_app/src/presentation/shared/user/user_cubit.dart';
-import 'package:todo_app/src/presentation/sign_in/sign_in_page.dart';
+import 'package:todo_app/presentation/routes/app_routes.dart';
+import 'package:todo_app/presentation/shared/user/user_cubit.dart';
+import 'package:todo_app/presentation/sign_in/sign_in_page.dart';
 
-import '../../utils/app_custom_message.dart';
-import '../../utils/app_theme.dart';
+import '../../src/utils/app_custom_message.dart';
+import '../../src/utils/app_theme.dart';
 import '../createtask/task_form_widge.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -60,7 +60,16 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                         child: CircularProgressIndicator.adaptive(),
                       );
                     }
-                    return Container();
+                    return GestureDetector(
+                      onTap: () => showAlertDialogExitApp(context),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CircleAvatar(
+                          backgroundColor: primaryColor,
+                          child: const Text("E"),
+                        ),
+                      ),
+                    );
                   },
                 ),
                 Padding(
