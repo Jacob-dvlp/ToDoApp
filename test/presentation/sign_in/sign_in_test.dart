@@ -20,12 +20,8 @@ void main() {
         (widgetTester) async {
           WidgetsFlutterBinding.ensureInitialized();
           await widgetTester.pumpWidget(
-            MultiBlocProvider(
-              providers: [
-                BlocProvider<SignInCubit>(
-                  create: (context) => locator.get<SignInCubit>(),
-                ),
-              ],
+            BlocProvider<SignInCubit>(
+              create: (context) => locator.get<SignInCubit>(),
               child: const MaterialApp(
                 home: SignInPage(),
               ),
@@ -47,12 +43,8 @@ void main() {
         (widgetTester) async {
           WidgetsFlutterBinding.ensureInitialized();
           await widgetTester.pumpWidget(
-            MultiBlocProvider(
-              providers: [
-                BlocProvider<SignInCubit>(
-                  create: (context) => locator.get<SignInCubit>(),
-                ),
-              ],
+            BlocProvider<SignInCubit>(
+              create: (context) => locator.get<SignInCubit>(),
               child: const MaterialApp(
                 home: SignInPage(),
               ),
