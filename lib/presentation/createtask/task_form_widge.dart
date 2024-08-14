@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:todo_app/app_exports.dart';
+import 'package:todo_app/presentation/home/home_page.dart';
 import 'package:todo_app/src/services/locator.dart';
 import 'package:todo_app/src/services/locator_service.dart';
-import 'package:todo_app/presentation/home/home_page.dart';
 import 'package:todo_app/utils/app_theme.dart';
 
 import '../../src/demain/entities/task_entitie.dart';
@@ -101,8 +101,6 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
                                       description: descriptionController.text,
                                       id: widget.entitie!.id),
                                 );
-                            Messages.showSuccess(
-                                context, "Tarefa atualizada com Sucesso");
                             locator<TaskCubit>().getTaskList();
                             await locator<TaskDetailsCubit>()
                                 .getTaskById(id: widget.entitie!.id.toString());
@@ -137,8 +135,7 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
                                 title: titleController.text,
                                 date: DateTime.now().toString(),
                                 description: descriptionController.text);
-                            Messages.showSuccess(
-                                context, "Tarefa criada com Sucesso");
+
                             locator<TaskCubit>().getTaskList();
                             return AppRoutes.go(
                                 context: context, page: const HomePage());

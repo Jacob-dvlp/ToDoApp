@@ -1,27 +1,18 @@
 import 'package:todo_app/app_exports.dart';
-import 'package:todo_app/src/services/locator.dart';
 import 'package:todo_app/presentation/routes/app_routes.dart';
 import 'package:todo_app/presentation/shared/user/user_cubit.dart';
 import 'package:todo_app/presentation/sign_in/sign_in_page.dart';
+import 'package:todo_app/src/services/locator.dart';
 
+import '../../src/services/locator_service.dart';
 import '../../utils/app_custom_message.dart';
 import '../../utils/app_theme.dart';
-import '../createtask/task_form_widge.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({super.key});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
-        ),
-        border: Border(
-          bottom: BorderSide(color: primaryColor),
-        ),
-      ),
+    return SizedBox(
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -78,28 +69,20 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                     alignment: Alignment.bottomRight,
                     child: Column(
                       children: [
-                        GestureDetector(
-                          key: const Key("createtask-page"),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              ModalBottomSheetRoute(
-                                  builder: (context) {
-                                    return const SizedBox(
-                                      height: 800,
-                                      child: TaskFormWidge(),
-                                    );
-                                  },
-                                  isScrollControlled: true),
-                            );
-                          },
-                          child: CircleAvatar(
+                        CircleAvatar(
                             backgroundColor: primaryColor,
-                            child: const Icon(
-                              Icons.create,
-                            ),
-                          ),
-                        ),
+                            child: GestureDetector(
+                                onTap: () async {
+                                  await context
+                                      .read<TaskCubit>()
+                                      .deleteAllTasks();
+                                  await locator.get<TaskCubit>().getTaskList();
+                                  return Messages.showSuccess(
+                                    context,
+                                    "Tarefas excluidas com successo",
+                                  );
+                                },
+                                child: const Icon(Icons.delete))),
                         const SizedBox(
                           height: 10,
                         ),
