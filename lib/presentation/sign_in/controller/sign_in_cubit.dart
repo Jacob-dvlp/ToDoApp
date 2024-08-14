@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:todo_app/src/infra/demain/usecases/usecases.dart';
+import 'package:todo_app/src/demain/usecases/usecases.dart';
 
 part 'sign_in_state.dart';
 

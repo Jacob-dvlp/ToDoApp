@@ -1,11 +1,11 @@
 import 'package:todo_app/app_exports.dart';
-import 'package:todo_app/src/infra/services/locator.dart';
+import 'package:todo_app/src/services/locator.dart';
 import 'package:todo_app/presentation/home/home_page.dart';
 import 'package:todo_app/presentation/routes/app_routes.dart';
 
-import '../../src/infra/services/locator_service.dart';
-import '../../src/utils/app_custom_message.dart';
-import '../../src/utils/app_theme.dart';
+import '../../src/services/locator_service.dart';
+import '../../utils/app_custom_message.dart';
+import '../../utils/app_theme.dart';
 import '../createtask/task_form_widge.dart';
 import 'widgets/custom_details_widget.dart';
 

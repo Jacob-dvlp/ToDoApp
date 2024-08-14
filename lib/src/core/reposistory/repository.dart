@@ -2,9 +2,9 @@ export 'dart:developer';
 
 export 'package:dartz/dartz.dart';
 export 'package:firebase_auth/firebase_auth.dart';
-export 'package:todo_app/src/infra/core/reposistory/repository.dart';
-export 'package:todo_app/src/infra/demain/entities/user_entite.dart';
-export 'package:todo_app/src/infra/demain/repository/user_repository_i.dart';
+export 'package:todo_app/src/core/reposistory/repository.dart';
+export 'package:todo_app/src/demain/entities/user_entite.dart';
+export 'package:todo_app/src/demain/repository/user_repository_i.dart';
 
 export '../../demain/repository/sign_up_repository_i.dart';
 export '../../demain/usecases/usecases.dart';

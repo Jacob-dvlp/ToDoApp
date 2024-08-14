@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:todo_app/src/infra/core/reposistory/repository.dart';
-import 'package:todo_app/src/infra/demain/usecases/usecases.dart';
+import 'package:todo_app/src/core/reposistory/repository.dart';
+import 'package:todo_app/src/demain/usecases/usecases.dart';
 
 part 'task_details_state.dart';
 

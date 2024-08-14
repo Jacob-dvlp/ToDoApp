@@ -5,7 +5,8 @@ Este é um aplicativo de Todo List desenvolvido em Flutter, projetado para ajuda
 
 ## Funcionalidades
 
-- **Gerenciamento de Tarefas:** Adicione, edite, e exclua tarefas.
+- **Gerenciamento de Tarefas:** Adicione, edite e exclua tarefas.
+- **Filtragem de Tarefas:** Filtre tarefas por concluídas e não concluídas.
 - **Autenticação:** Login com Firebase Authentication.
 - **Armazenamento Local:** As tarefas são armazenadas localmente utilizando Sqflite.
 - **Arquitetura Limpa:** O aplicativo segue os princípios da Clean Architecture para garantir um código modular, testável e de fácil manutenção.
@@ -32,7 +33,6 @@ Este é um aplicativo de Todo List desenvolvido em Flutter, projetado para ajuda
 - **[meta: ^1.12.0](https://pub.dev/packages/meta)**
 - **[top_snackbar_flutter: ^3.1.0](https://pub.dev/packages/top_snackbar_flutter)**
 - **[either_dart: ^1.0.0](https://pub.dev/packages/either_dart)**
-- **[flutter_secure_storage: ^9.2.2](https://pub.dev/packages/flutter_secure_storage)**
 - **[sqflite: ^2.3.3](https://pub.dev/packages/sqflite)**
 - **[path: ^1.9.0](https://pub.dev/packages/path)**
 - **[path_provider: ^2.1.4](https://pub.dev/packages/path_provider)**
@@ -62,5 +62,5 @@ O projeto segue uma estrutura baseada na Clean Architecture:
 
 - **Testes de Unidade:** Execute `flutter test` para rodar os testes de unidade.
 - **Testes de Widget:** Os testes de widget estão localizados na pasta `test/`.
-- **Testes de Integração:** Execute `flutter test integration_test/main_test` para rodar os testes de integração.
+- **Testes de Integração:** Execute `flutter test integration_test` para rodar os testes de integração.
 

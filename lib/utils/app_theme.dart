@@ -1,4 +1,4 @@
-import '../../app_exports.dart';
+import '../app_exports.dart';
 
 Color backgroundColorYellow = const Color(0xFFfff7e6);
 Color backgroundColorGreen = const Color(0xFFecffde);
@@ -9,6 +9,9 @@ ThemeData darkTheme(BuildContext context) {
   return ThemeData(
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: Color(0xFF151515),
+    ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: Colors.white
     ),
     inputDecorationTheme: const InputDecorationTheme(
       focusedBorder:

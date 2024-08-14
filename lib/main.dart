@@ -1,7 +1,7 @@
-import 'package:todo_app/src/infra/services/locator_service.dart';
+import 'package:todo_app/src/services/locator_service.dart';
 
 import 'app_exports.dart';
-import 'src/infra/services/locator.dart';
+import 'src/services/locator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

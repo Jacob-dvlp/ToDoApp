@@ -3,8 +3,8 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:todo_app/app_exports.dart';
 
-import '../../src/utils/app_constants.dart';
-import '../../src/utils/app_custom_message.dart';
+import '../../utils/app_constants.dart';
+import '../../utils/app_custom_message.dart';
 import '../home/home_page.dart';
 import '../routes/app_routes.dart';
 import '../sign_in/sign_in_page.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:todo_app/src/infra/core/reposistory/repository.dart';
-import 'package:todo_app/src/infra/services/locator.dart';
+import 'package:todo_app/src/core/reposistory/repository.dart';
+import 'package:todo_app/src/services/locator.dart';
 
 import '../../../utils/mocks/mocks.mocks.dart';
 

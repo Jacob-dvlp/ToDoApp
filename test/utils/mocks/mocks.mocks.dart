@@ -6,18 +6,18 @@
 import 'dart:async' as _i5;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:todo_app/src/infra/core/datasource/firebase/firebase.dart'
+import 'package:todo_app/src/core/datasource/firebase/firebase.dart'
     as _i2;
-import 'package:todo_app/src/infra/core/reposistory/repository.dart' as _i3;
-import 'package:todo_app/src/infra/core/reposistory/sign_in_repository.dart'
+import 'package:todo_app/src/core/reposistory/repository.dart' as _i3;
+import 'package:todo_app/src/core/reposistory/sign_in_repository.dart'
     as _i4;
-import 'package:todo_app/src/infra/demain/usecases/details_usecase_imp.dart'
+import 'package:todo_app/src/demain/usecases/details_usecase_imp.dart'
     as _i9;
-import 'package:todo_app/src/infra/demain/usecases/sign_in_usecase_imp.dart'
+import 'package:todo_app/src/demain/usecases/sign_in_usecase_imp.dart'
     as _i7;
-import 'package:todo_app/src/infra/demain/usecases/sign_up_usecase_imp.dart'
+import 'package:todo_app/src/demain/usecases/sign_up_usecase_imp.dart'
     as _i6;
-import 'package:todo_app/src/infra/demain/usecases/task_usecase_imp.dart'
+import 'package:todo_app/src/demain/usecases/task_usecase_imp.dart'
     as _i8;
 
 // ignore_for_file: type=lint

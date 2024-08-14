@@ -1,11 +1,11 @@
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:todo_app/app_exports.dart';
-import 'package:todo_app/src/infra/services/locator.dart';
+import 'package:todo_app/src/services/locator.dart';
 import 'package:todo_app/presentation/widgets/custom_app_bar.dart';
 
-import '../../src/infra/services/locator_service.dart';
-import '../../src/utils/app_custom_message.dart';
-import '../../src/utils/app_theme.dart';
+import '../../src/services/locator_service.dart';
+import '../../utils/app_custom_message.dart';
+import '../../utils/app_theme.dart';
 import 'widget/custom_card_widget.dart';
 
 class HomePage extends StatefulWidget {

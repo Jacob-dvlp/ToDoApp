@@ -1,13 +1,13 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:todo_app/app_exports.dart';
-import 'package:todo_app/src/infra/services/locator.dart';
-import 'package:todo_app/src/infra/services/locator_service.dart';
+import 'package:todo_app/src/services/locator.dart';
+import 'package:todo_app/src/services/locator_service.dart';
 import 'package:todo_app/presentation/home/home_page.dart';
-import 'package:todo_app/src/utils/app_theme.dart';
+import 'package:todo_app/utils/app_theme.dart';
 
-import '../../src/infra/demain/entities/task_entitie.dart';
-import '../../src/utils/app_custom_message.dart';
+import '../../src/demain/entities/task_entitie.dart';
+import '../../utils/app_custom_message.dart';
 import '../routes/app_routes.dart';
 import '../widgets/custom_text_form_field.dart';
 

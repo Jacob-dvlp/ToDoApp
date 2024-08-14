@@ -3,8 +3,8 @@ import 'package:todo_app/presentation/home/home_page.dart';
 import 'package:todo_app/presentation/sign_in/controller/sign_in_cubit.dart';
 
 import '../../../app_exports.dart';
-import '../../src/utils/app_constants.dart';
-import '../../src/utils/app_custom_message.dart';
+import '../../utils/app_constants.dart';
+import '../../utils/app_custom_message.dart';
 import '../routes/app_routes.dart';
 import '../widgets/custom_text_form_field.dart';
 

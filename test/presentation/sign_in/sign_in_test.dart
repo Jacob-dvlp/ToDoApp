@@ -2,8 +2,8 @@ import 'package:firebase_core_platform_interface/firebase_core_platform_interfac
 import 'package:flutter_test/flutter_test.dart';
 import 'package:todo_app/app_exports.dart';
 import 'package:todo_app/presentation/sign_in/sign_in_page.dart';
-import 'package:todo_app/src/infra/services/locator.dart';
-import 'package:todo_app/src/infra/services/locator_service.dart';
+import 'package:todo_app/src/services/locator.dart';
+import 'package:todo_app/src/services/locator_service.dart';
 
 void main() {
   setUpAll(() async {

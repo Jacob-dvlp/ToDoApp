@@ -1,5 +1,5 @@
 import 'package:mockito/annotations.dart';
-import 'package:todo_app/src/infra/services/locator.dart';
+import 'package:todo_app/src/services/locator.dart';
 
 @GenerateMocks([
   ClientFirebase,

@@ -1,4 +1,4 @@
-import 'package:todo_app/src/infra/core/reposistory/repository.dart';
+import 'package:todo_app/src/core/reposistory/repository.dart';
 
 abstract interface class UserLocalUsecaseI {
   Future<Either<Failure, bool>> createUserInLocalStorege(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/src/utils/app_theme.dart';
+import 'package:todo_app/utils/app_theme.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
