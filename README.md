@@ -3,6 +3,9 @@
 
 Este é um aplicativo de Todo List desenvolvido em Flutter, projetado para ajudar os usuários a gerenciar suas tarefas diárias. Ele foi criado utilizando a arquitetura Clean Architecture e implementa testes de unidade, testes de widget e testes de integração para garantir a qualidade e a confiabilidade do código.
 
+ Apresentação:  [Apresentação do Aplicativo](https://youtu.be/RGuE_gArwgY)
+
+
 ## Funcionalidades
 
 - **Gerenciamento de Tarefas:** Adicione, edite e exclua tarefas.
