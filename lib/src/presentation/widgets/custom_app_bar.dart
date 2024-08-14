@@ -63,46 +63,47 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                     return Container();
                   },
                 ),
-                GestureDetector(
-                  onTap: () async {
-                    Navigator.push(
-                      context,
-                      ModalBottomSheetRoute(
-                          builder: (context) {
-                            return const SizedBox(
-                              height: 800,
-                              child: TaskFormWidge(),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20.0, top: 40),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: Column(
+                      children: [
+                        GestureDetector(
+                          key: const Key("createtask-page"),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              ModalBottomSheetRoute(
+                                  builder: (context) {
+                                    return const SizedBox(
+                                      height: 800,
+                                      child: TaskFormWidge(),
+                                    );
+                                  },
+                                  isScrollControlled: true),
                             );
                           },
-                          isScrollControlled: true),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 20.0, top: 40),
-                    child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: Column(
-                        children: [
-                          CircleAvatar(
+                          child: CircleAvatar(
                             backgroundColor: primaryColor,
                             child: const Icon(
                               Icons.create,
                             ),
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          GestureDetector(
-                            onTap: () => showAlertDialog(context),
-                            child: CircleAvatar(
-                              backgroundColor: primaryColor,
-                              child: const Icon(
-                                Icons.filter_alt,
-                              ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        GestureDetector(
+                          onTap: () => showAlertDialog(context),
+                          child: CircleAvatar(
+                            backgroundColor: primaryColor,
+                            child: const Icon(
+                              Icons.filter_alt,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

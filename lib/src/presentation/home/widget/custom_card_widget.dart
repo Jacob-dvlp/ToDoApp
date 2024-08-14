@@ -39,6 +39,7 @@ class CustomCardWidget extends StatelessWidget {
             return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
+                  key: const Key("goTodetails"),
                   onTap: () async {
                     context
                         .read<TaskDetailsCubit>()

@@ -57,10 +57,12 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
                 height: 20,
               ),
               CustomTextFormField(
+                key: const Key("title"),
                 labelText: 'Titulo',
                 textEditingController: titleController,
               ),
               CustomTextFormField(
+                key: const Key("description"),
                 labelText: 'Descrição',
                 textEditingController: descriptionController,
               ),
@@ -74,6 +76,7 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
               else
                 widget.isEditeTask
                     ? ElevatedButton(
+                        key: const Key("updateTaskButton"),
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 130, vertical: 10),
@@ -112,6 +115,7 @@ class _TaskFormWidgeState extends State<TaskFormWidge> {
                         ),
                       )
                     : ElevatedButton(
+                        key: const Key("elevateButtonSaveTask"),
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 130, vertical: 10),

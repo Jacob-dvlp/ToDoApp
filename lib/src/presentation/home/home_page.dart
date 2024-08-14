@@ -28,9 +28,12 @@ class _HomePageState extends State<HomePage>
         child: IconButton(
           onPressed: () async {
             await context.read<TaskCubit>().deleteAllTasks();
+            
             await locator.get<TaskCubit>().getTaskList();
             return Messages.showSuccess(
-                context, "Tarefas excluidas com successo");
+              context,
+              "Tarefas excluidas com successo",
+            );
           },
           icon: const Icon(Icons.delete),
         ),

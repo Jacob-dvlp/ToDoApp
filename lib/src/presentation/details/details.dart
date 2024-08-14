@@ -25,6 +25,7 @@ class Details extends StatelessWidget {
         if (state is TaskDetailsLoaded) {
           return Scaffold(
             appBar: AppBar(
+              
               actions: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -49,6 +50,7 @@ class Details extends StatelessWidget {
             floatingActionButton: CircleAvatar(
               backgroundColor: primaryColor,
               child: IconButton(
+                key: const Key("updateTask"),
                 onPressed: () {
                   Navigator.push(
                     context,
